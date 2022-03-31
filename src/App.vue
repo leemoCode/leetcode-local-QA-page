@@ -5,11 +5,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import Template from "./components/Template.vue";
+import { defineComponent } from 'vue';
+import Template from './components/Template.vue';
 
 export default defineComponent({
-  name: "App",
+  name: 'App',
   components: {
     Template,
   },
