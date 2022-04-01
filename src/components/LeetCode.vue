@@ -4,14 +4,34 @@
       <h3 class="title" @click.stop="goLeetCode(item.url)">
         {{ item.id }}. {{ item.title }}
       </h3>
-      <h4 class="description">{{ item.description }}</h4>
+      <div
+        class="description"
+        v-for="item in transMultiLines(item.description)"
+        :key="item.description"
+      >
+        {{ item }}
+      </div>
       <div class="divider"></div>
-      <h5>Solution:</h5>
-      <h5 class="solution">{{ item.solution }}</h5>
+      <h4>Example:</h4>
+      <div class="io" v-for="item in transMultiLines(item.io)" :key="item.io">
+        {{ item }}
+      </div>
       <div class="divider"></div>
-      <h5>Code:</h5>
-      <div class="code">
-        <pre v-highlight><code class="TypeScript">{{ item.code }}</code></pre>
+      <h4>Solution:</h4>
+      <div
+        class="solution"
+        v-for="item in transMultiLines(item.solution)"
+        :key="item.solution"
+      >
+        {{ item }}
+      </div>
+      <div class="divider"></div>
+      <h4>Code:</h4>
+      <div v-for="(item, index) in item.code" :key="item.code">
+        <h5>Code {{ index + 1 }} :</h5>
+        <div class="code">
+          <pre v-highlight><code class="TypeScript">{{ item }}</code></pre>
+        </div>
       </div>
     </div>
   </div>
@@ -31,10 +51,15 @@ export default defineComponent({
       window.open(url);
     };
 
+    const transMultiLines = (txt: string) => {
+      return txt.split('\n');
+    };
+
     return {
       questionList,
 
       goLeetCode,
+      transMultiLines,
     };
   },
 });
@@ -44,6 +69,7 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 .divider {
   width: 100%;
@@ -54,13 +80,32 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-width: 80%;
+
+  margin: 10px 0;
+  padding: 10px;
+
+  border: 3px solid #b8b6b6;
 
   .title {
     cursor: pointer;
   }
 
+  .description {
+    margin-bottom: 10px;
+  }
+
+  .io {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+
+  .solution {
+    margin-bottom: 10px;
+  }
+
   .code {
-    max-width: 70%;
+    max-width: 90%;
   }
 }
 </style>

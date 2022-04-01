@@ -16,6 +16,7 @@ export interface QuestionItemInterface {
   url: string; // 题目链接
   title: string; // 题目标题
   description: string; // 描述
+  io: string; // 示例输入输出
   solution: string; // 解法
-  code: string; // 代码
+  code: string[]; // 代码
 }
