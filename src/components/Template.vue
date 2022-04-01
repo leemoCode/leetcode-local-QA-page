@@ -1,15 +1,12 @@
 <template>
   {{ msg }}
-
-  <div v-highlight>
-    <pre>
-        <code class="TypeScript">{{ testFunc }}</code>
-    </pre>
-  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+
+import { useData } from '../data/index';
+import { useAbility } from '../ability/index';
 
 export default defineComponent({
   name: 'Template',
@@ -17,17 +14,14 @@ export default defineComponent({
   setup() {
     const msg = 'Component: Template';
 
-    const testFunc = () => {
-      // 声明变量a
-      const a = 1;
-      const b = 2;
-      console.log(a, b);
-    };
+    const { page } = useData();
+    const { sayHello } = useAbility();
 
     return {
       msg,
 
-      testFunc,
+      page,
+      sayHello,
     };
   },
 });
