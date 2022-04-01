@@ -27,10 +27,10 @@
       </div>
       <div class="divider"></div>
       <h4>Code:</h4>
-      <div v-for="(item, index) in item.code" :key="item.code">
-        <h5>Code {{ index + 1 }} :</h5>
+      <div v-for="(codeItem, index) in item.code" :key="codeItem.code">
+        <h5 v-if="item.code && item.code.length > 1" >Code {{ index + 1 }} :</h5>
         <div class="code">
-          <pre v-highlight><code class="TypeScript">{{ item }}</code></pre>
+          <pre v-highlight><code class="TypeScript">{{ codeItem }}</code></pre>
         </div>
       </div>
     </div>
@@ -80,7 +80,7 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-width: 80%;
+  width: 80%;
 
   margin: 10px 0;
   padding: 10px;

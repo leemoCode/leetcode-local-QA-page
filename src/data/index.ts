@@ -47,6 +47,17 @@ export function useLeetCodeData(): LeetCodeDataInterface {
     code: [code.question387.toString(), code.question387_1.toString()],
   })
 
+  questionList.push({
+    id: 14,
+    url: 'https://leetcode-cn.com/problems/longest-common-prefix/',
+    title: '最长公共前缀',
+    description: '编写一个函数来查找字符串数组中的最长公共前缀。\n如果不存在公共前缀，返回空字符串 ""。',
+    io: '输入： strs = ["flower","flow","flight"]\n输出： "fl"\n输入： strs = ["dog","racecar","car"]\n输出： ""\n解释： 输入不存在公共前缀。',
+    solution: '解构赋值翻转第i和第str.length - 1 - i个元素',
+    code: [code.question14.toString()],
+  })
+
+
   return {
     questionList,
   }
