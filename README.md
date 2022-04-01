@@ -29,3 +29,9 @@ npm : 无法将“npm”项识别为 cmdlet、函数、脚本文件或可运行�
 
 # 切换淘宝镜像
 npm config set registry http://registry.npm.taobao.org/
+
+# 编译运行ts
+npm install -g typescript
+npm install -g ts-node
+如果出现乱码：
+file -> preference -> setting -> Extension -> Run Code configuration，将其中的 Run in Terminal 选中即可。
