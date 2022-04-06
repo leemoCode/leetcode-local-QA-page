@@ -21,7 +21,7 @@ export default defineComponent({
   setup() {
     const { page, Page, goPage } = useData();
 
-    goPage(Page.HOME);
+    goPage(Page.LEET_CODE);
 
     return {
       page,
