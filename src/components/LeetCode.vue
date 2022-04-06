@@ -26,12 +26,10 @@
         {{ item }}
       </div>
       <div class="divider"></div>
-      <h4>Code:</h4>
+      <h4 v-if="item.code && item.code.length === 1">Code:</h4>
       <div v-for="(codeItem, index) in item.code" :key="codeItem.code">
-        <h5 v-if="item.code && item.code.length > 1" >Code {{ index + 1 }} :</h5>
-        <div class="code">
-          <pre v-highlight><code class="TypeScript">{{ codeItem }}</code></pre>
-        </div>
+        <h4 v-if="item.code && item.code.length > 1">Code {{ index + 1 }} :</h4>
+        <pre v-highlight><code class="code">{{ codeItem }}</code></pre>
       </div>
     </div>
   </div>
@@ -40,6 +38,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { useLeetCodeData } from '../data/index';
+import 'highlight.js/styles/brown-paper.css'; //导入代码高亮样式
 
 export default defineComponent({
   name: 'LeetCode',
@@ -65,11 +64,15 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
+@import '../assets/css/code.scss';
+
 .question-list {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  color: #eeeeec;
 }
 .divider {
   width: 100%;
@@ -85,7 +88,8 @@ export default defineComponent({
   margin: 10px 0;
   padding: 10px;
 
-  border: 3px solid #b8b6b6;
+  border: 3px solid #e9e8e8;
+  border-radius: 6px;
 
   .title {
     cursor: pointer;
@@ -105,7 +109,8 @@ export default defineComponent({
   }
 
   .code {
-    max-width: 90%;
+    max-width: 70%;
+    border-radius: 6px;
   }
 }
 </style>

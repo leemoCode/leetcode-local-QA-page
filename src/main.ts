@@ -2,7 +2,7 @@ import { createApp } from "vue";
 import App from "./App.vue";
 
 import hljs from 'highlight.js' //导入代码高亮文件
-import 'highlight.js/styles/monokai-sublime.css'  //导入代码高亮样式
+import 'highlight.js/styles/brown-paper.css'  //导入代码高亮样式
 
 const app = createApp(App)
 

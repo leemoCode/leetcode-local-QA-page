@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="moliar">
     <component :is="page"></component>
   </div>
 </template>
@@ -22,8 +22,14 @@ export default defineComponent({
     goPage(Page.LEET_CODE);
 
     return {
-      page
-    }
-  }
+      page,
+    };
+  },
 });
 </script>
+<style lang="scss" scoped>
+// https://color.oulu.me/deta2.html
+.moliar {
+  background-image: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);
+}
+</style>
