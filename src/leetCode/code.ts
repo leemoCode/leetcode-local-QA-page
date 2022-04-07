@@ -76,3 +76,36 @@ export const question088 = (nums1: number[], m: number, nums2: number[], n: numb
   }
   // 无需return 最后结果放在nums1内即可
 }
+
+export const questionO03 = (arr: number[]) => {
+  // 建立哈希表
+  const hash: { [key: number]: number } = {};
+
+  for (const item of arr) {
+    if (hash[item]) {
+      return item;
+    }
+
+    hash[item] = 1;
+  }
+};
+
+
+export const question349 = (arr1: number[], arr2: number[]) => {
+  const hash: { [key: number]: number } = {};
+
+  for (const item of arr1) {
+    hash[item] = 1;
+  }
+
+  const res = new Set();
+
+  for (const item of arr2) {
+    // 出现交集
+    if (hash[item]) {
+      res.add(item);
+    }
+  }
+
+  return [...res] as number[];
+};
