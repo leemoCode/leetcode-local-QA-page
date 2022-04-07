@@ -1,3 +1,8 @@
+interface ListNode {
+  val: number;
+  next: ListNode | null;
+}
+
 export const question344 = (s: string[]) => {
   for (let i = 0; i < s.length / 2; i++) {
     [s[i], s[s.length - 1 - i]] = [s[s.length - 1 - i], s[i]];
@@ -109,3 +114,69 @@ export const question349 = (arr1: number[], arr2: number[]) => {
 
   return [...res] as number[];
 };
+
+export const question021 = (curNode1: ListNode | null, curNode2: ListNode | null) => {
+  if (curNode1 === null) {
+    return curNode2;
+  }
+
+  if (curNode2 === null) {
+    return curNode1;
+  }
+
+  // 返回值较小的节点，并将较小的节点指针向后移动
+  if (curNode1.val > curNode2.val) {
+    curNode2.next = question021(curNode1, curNode2.next);
+
+    return curNode2;
+  } else {
+    curNode1.next = question021(curNode1.next, curNode2);
+
+    return curNode1;
+  }
+};
+
+export const question203 = (head: ListNode | null, val: number) => {
+  if (head === null) {
+    return null;
+  }
+
+  (head.next as ListNode | null) = question203(head.next, val);
+
+  return head.val === val ? head.next : head;
+
+};
+
+export const question206 = (head: ListNode | null) => {
+  if (head === null) {
+    return head;
+  }
+
+  let cur = head;
+  let prev = null;
+
+  while (cur) {
+    const next = cur.next;
+
+    cur.next = prev;
+
+    prev = cur;
+    (cur as ListNode | null) = next;
+  }
+
+  return prev;
+};
+
+export const question206_1 = (head: ListNode | null) => {
+  if (head === null || head.next === null) {
+    return head;
+  }
+
+  const newHead: (ListNode | null) = question206_1(head.next);
+
+  head.next.next = head;
+  head.next = null;
+
+  return newHead;
+};
+

@@ -1,22 +1,21 @@
-const question349 = (arr1: number[], arr2: number[]) => {
-  const hash: { [key: number]: number } = {};
+interface ListNode {
+  val: number;
+  next: ListNode | null;
+}
 
-  for (const item of arr1) {
-    hash[item] = 1;
+const question206_1 = (head: ListNode | null) => {
+  if (head === null || head.next === null) {
+    return head;
   }
 
-  const res = new Set();
+  const newHead: (ListNode | null) = question206_1(head.next);
 
-  for (const item of arr2) {
-    // 出现交集
-    if (hash[item]) {
-      res.add(item);
-    }
-  }
+  head.next.next = head;
+  head.next = null;
 
-  return [...res] as number[];
+  return newHead;
 };
 
-const res = question349([1, 2, 3, 2, 0, 0], [2, 3, 2]);
+const res = question206_1();
 
 console.log(res);
