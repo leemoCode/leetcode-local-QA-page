@@ -167,12 +167,12 @@ export const question206 = (head: ListNode | null) => {
   return prev;
 };
 
-export const question206_1 = (head: ListNode | null) => {
+export const question206_1 = (head: ListNode | null) : (ListNode | null) => {
   if (head === null || head.next === null) {
     return head;
   }
 
-  const newHead: (ListNode | null) = question206_1(head.next);
+  const newHead = question206_1(head.next);
 
   head.next.next = head;
   head.next = null;
@@ -180,3 +180,51 @@ export const question206_1 = (head: ListNode | null) => {
   return newHead;
 };
 
+export const question242 = (s1: string, s2: string) => {
+  if (s1.length !== s2.length) {
+    return false;
+  }
+
+  const map1: { [key: string]: number } = {};
+
+  for (const item of s1) {
+    map1[item] = map1[item] ? map1[item] + 1 : 1;
+  }
+
+  for (const item of s2) {
+    if (!map1[item]) {
+      return false;
+    }
+
+    map1[item] = map1[item] - 1;
+
+    if (map1[item] < 0) {
+      return false;
+    }
+  }
+
+  return true;
+};
+
+
+export const question169 = (arr: number[]) => {
+  const hash: { [key: string]: number } = {};
+
+  for (const item of arr) {
+    hash[item] = hash[item] ? hash[item] + 1 : 1;
+
+    if (hash[item] > arr.length / 2) {
+      return item;
+    }
+  }
+}
+
+export const question136 = (arr: number[]) => {
+  let res = 0;
+
+  for (const item of arr) {
+    res ^= item;
+  }
+
+  return res;
+}
