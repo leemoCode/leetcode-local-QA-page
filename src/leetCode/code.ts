@@ -228,3 +228,20 @@ export const question136 = (arr: number[]) => {
 
   return res;
 }
+
+export const question011 = (arr: number[]) => {
+  let leftIndex = 0;
+  let rightIndex = arr.length - 1;
+  let res = 0;
+
+  while (leftIndex < rightIndex) {
+    const lowerValue = arr[leftIndex] < arr[rightIndex] ? arr[leftIndex] : arr[rightIndex];
+
+    res = Math.max(res, lowerValue * (rightIndex - leftIndex));
+
+    arr[leftIndex] < arr[rightIndex] ? leftIndex++ : rightIndex--;
+  }
+
+  return res;
+
+}
